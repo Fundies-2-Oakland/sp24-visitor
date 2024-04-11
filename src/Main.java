@@ -13,6 +13,7 @@ public class Main {
                 )));
         processDoc(new HtmlGeneratingVisitor(), elements);
         processDoc(new MarkdownGeneratingVisitor(), elements);
+        processDoc(new CharacterCountingVisitor(), elements);
     }
 
     private static void processDoc(DocumentVisitor visitor, List<DocumentPart> elements) {
