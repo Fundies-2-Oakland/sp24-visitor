@@ -11,12 +11,7 @@ public class Main {
                         "AI is whatever hasn't been done yet. --Larry Tesler",
                         "I'm not a great programmer. I'm just a good programmer with great habits. --Kent Beck"
                 )));
-        processDoc(new HtmlGeneratingVisitor(), elements);
-        processDoc(new MarkdownGeneratingVisitor(), elements);
-        processDoc(new CharacterCountingVisitor(), elements);
-    }
-
-    private static void processDoc(DocumentVisitor visitor, List<DocumentPart> elements) {
+        HtmlGeneratingVisitor visitor = new HtmlGeneratingVisitor();
         for (DocumentPart part : elements) {
             part.accept(visitor);
         }
