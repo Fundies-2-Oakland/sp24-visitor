@@ -6,6 +6,7 @@ public class Header implements DocumentPart {
         this.level = level;
         this.text = text;
     }
+
     @Override
     public void accept(DocumentVisitor visitor) {
         visitor.visitHeader(this);
