@@ -1,4 +1,4 @@
-public class Header implements DocumentElement {
+public class Header implements DocumentPart {
     int level;
     String text;
 

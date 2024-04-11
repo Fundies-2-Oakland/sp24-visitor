@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<DocumentElement> elements = List.of(
+        List<DocumentPart> elements = List.of(
                 new Header(1, "Ellen's Favorite Quotations"),
                 new Paragraph("Ellen often repeats these sayings to her students:"),
                 new BulletList(List.of(
@@ -12,8 +12,8 @@ public class Main {
                         "I'm not a great programmer. I'm just a good programmer with great habits. --Kent Beck"
                 )));
         HtmlGeneratingVisitor htmlGeneratingVisitor = new HtmlGeneratingVisitor();
-        for (DocumentElement element : elements) {
-            element.accept(htmlGeneratingVisitor);
+        for (DocumentPart part : elements) {
+            part.accept(htmlGeneratingVisitor);
         }
         System.out.println(htmlGeneratingVisitor.getOutput());
     }

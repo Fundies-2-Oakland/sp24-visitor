@@ -1,4 +1,4 @@
-public class Paragraph implements DocumentElement {
+public class Paragraph implements DocumentPart {
     final String text;
 
     public Paragraph(String text) {

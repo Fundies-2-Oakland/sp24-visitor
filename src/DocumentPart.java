@@ -1,3 +1,3 @@
-public interface DocumentElement {
+public interface DocumentPart {
     void accept(DocumentVisitor visitor);
 }
