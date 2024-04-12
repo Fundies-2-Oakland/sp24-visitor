@@ -11,8 +11,25 @@ public class Main {
                         "AI is whatever hasn't been done yet. --Larry Tesler",
                         "I'm not a great programmer. I'm just a good programmer with great habits. --Kent Beck"
                 )));
-        HtmlGeneratingVisitor visitor = new HtmlGeneratingVisitor();
-        for (DocumentPart part : elements) {
+        renderDoc(new HtmlGeneratingVisitor(), elements);
+        renderDoc(new MarkdownGeneratingVisitor(), elements);
+        renderDoc(new CharacterCountingVisitor(), elements);
+    }
+
+    public RowColPair chooseNextMove(GameModel model, int depth, TileColor tileColor) {
+        // The initial value of alpha is -Double.MAX_VALUE because
+        // Double.MIN_VALUE is the smallest *positive* double value.
+        Move move = getMyMove(model, depth, -Double.MAX_VALUE, Double.MAX_VALUE, tileColor);
+        return move.getPosition();
+    }
+
+    @Override
+    public Move getMyMove(GameModel model, int depth, TileColor tileColor) {
+        return getMyMove(model, depth, -Double.MAX_VALUE, Double.MAX_VALUE, tileColor);
+    }
+
+    private static void renderDoc(DocumentVisitor visitor, List<DocumentPart> parts) {
+        for (DocumentPart part : parts) {
             part.accept(visitor);
         }
         System.out.println(visitor.getOutput());
